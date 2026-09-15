@@ -8,10 +8,9 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo height={28} />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              {site.descriptor}
-            </p>
-            <p className="mt-4 font-mono text-xs uppercase tracking-[0.28em] text-accent">
+            <p className="display-tight mt-5 max-w-xs text-lg text-cream">{site.tagline}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{site.descriptor}</p>
+            <p className="mt-6 font-mono text-xs uppercase tracking-[0.28em] text-accent">
               {site.mission}
             </p>
           </div>

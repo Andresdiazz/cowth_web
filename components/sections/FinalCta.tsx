@@ -1,6 +1,7 @@
 import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { site } from "@/lib/site";
 
 export function FinalCta() {
@@ -21,6 +22,9 @@ export function FinalCta() {
               de qué construir primero y qué puede esperar. Si no somos lo que necesitas, te lo
               decimos.
             </p>
+            <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
+              {site.tagline}
+            </p>
           </Reveal>
 
           <Reveal delay={140} className="md:col-span-5">
@@ -29,9 +33,10 @@ export function FinalCta() {
                 Agenda una llamada
                 <ArrowIcon />
               </ButtonLink>
-              <a
+              <SpotlightCard
+                as="a"
                 href={`mailto:${site.email}`}
-                className="group block rounded-2xl border hairline bg-ink/50 p-6 transition-colors duration-300 hover:border-accent/30"
+                className="group block rounded-2xl p-6"
               >
                 <span className="font-mono text-xs uppercase tracking-[0.28em] text-faint">
                   Escríbenos
@@ -39,7 +44,7 @@ export function FinalCta() {
                 <span className="mt-2 block text-lg text-cream transition-colors duration-300 group-hover:text-accent">
                   {site.email}
                 </span>
-              </a>
+              </SpotlightCard>
             </div>
           </Reveal>
         </div>

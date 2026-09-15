@@ -1,6 +1,7 @@
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const perks = [
   { title: "Mesa de trabajo", text: "Sesiones en vivo para resolver tu caso, no para escuchar teoría." },
@@ -42,7 +43,7 @@ export function Community() {
           </Reveal>
 
           <Reveal delay={140} className="md:col-span-6">
-            <div className="rounded-2xl border hairline bg-ink/60 p-7 sm:p-9">
+            <SpotlightCard className="rounded-2xl p-7 sm:p-9">
               <h3 className="display-tight text-xl text-cream">Entra a la lista de espera</h3>
               <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">
                 Los primeros en la lista entran antes y con condiciones de fundador.
@@ -54,7 +55,7 @@ export function Community() {
                 successBody="Te escribimos en cuanto abramos los primeros cupos. Sin adelantos por otro lado."
                 note="Te avisamos solo cuando haya algo real que contarte."
               />
-            </div>
+            </SpotlightCard>
           </Reveal>
         </div>
       </div>

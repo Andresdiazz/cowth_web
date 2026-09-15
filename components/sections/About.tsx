@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const pillars = [
   {
@@ -50,23 +51,35 @@ export function About() {
             </div>
           </Reveal>
 
-          <Reveal delay={140} className="md:col-span-5">
-            <ul className="divide-y divide-cream/8 border-y hairline">
-              {pillars.map((pillar) => (
-                <li key={pillar.name}>
-                  <a
+          <div className="md:col-span-5">
+            <ul className="space-y-3">
+              {pillars.map((pillar, index) => (
+                <Reveal key={pillar.name} as="li" delay={140 + index * 90}>
+                  {/* El enlace es la tarjeta completa: área de toque cómoda en móvil. */}
+                  <SpotlightCard
+                    as="a"
                     href={pillar.href}
-                    className="group flex flex-col gap-2 py-6 transition-colors duration-300"
+                    className="group flex items-start justify-between gap-4 rounded-2xl p-6"
                   >
-                    <span className="display-tight text-xl text-cream transition-colors duration-300 group-hover:text-accent">
-                      {pillar.name}
+                    <span>
+                      <span className="display-tight block text-xl text-cream transition-colors duration-300 group-hover:text-accent">
+                        {pillar.name}
+                      </span>
+                      <span className="mt-2 block text-sm leading-relaxed text-muted">
+                        {pillar.text}
+                      </span>
                     </span>
-                    <span className="text-sm leading-relaxed text-muted">{pillar.text}</span>
-                  </a>
-                </li>
+                    <span
+                      aria-hidden
+                      className="mt-1 font-mono text-sm text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
+                    >
+                      →
+                    </span>
+                  </SpotlightCard>
+                </Reveal>
               ))}
             </ul>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

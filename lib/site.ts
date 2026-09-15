@@ -3,6 +3,9 @@ export const site = {
   wordmark: "cowth",
   url: "https://cowth.co",
   email: "andres@cowth.co",
+  /** Frente a clientes: navbar, hero, Lab y footer. */
+  tagline: "No somos tu agencia. Somos tu socio.",
+  /** Cierres emocionales. */
   mission: "Nadie crece solo.",
   descriptor: "El ecosistema donde los negocios crecen acompañados.",
   description:

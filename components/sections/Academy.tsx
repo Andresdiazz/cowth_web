@@ -1,6 +1,7 @@
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const chapters = [
   "Por qué la mayoría de negocios se estanca antes del año dos",
@@ -47,7 +48,7 @@ export function Academy() {
           </Reveal>
 
           <Reveal delay={140} className="md:col-span-6">
-            <div className="rounded-2xl border hairline bg-surface p-7 sm:p-9">
+            <SpotlightCard className="rounded-2xl p-7 sm:p-9">
               <h3 className="display-tight text-xl text-cream">Descárgalo gratis</h3>
               <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">
                 Déjanos tu nombre y correo. Te lo enviamos al instante.
@@ -60,7 +61,7 @@ export function Academy() {
                 successBody="Te enviamos el e-book. Si no aparece en unos minutos, mira en spam o promociones."
                 note="Nada de spam. Solo contenido útil y puedes darte de baja cuando quieras."
               />
-            </div>
+            </SpotlightCard>
           </Reveal>
         </div>
       </div>
