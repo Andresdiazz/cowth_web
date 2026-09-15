@@ -1,23 +1,10 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { site } from "@/lib/site";
+import type { Dictionary } from "@/lib/i18n";
 
-const beliefs = [
-  {
-    title: "Personas antes que dinero",
-    text: "Primero entendemos a quién tienes enfrente y qué está en juego. El dinero llega después, y llega mejor.",
-  },
-  {
-    title: "Ejecución antes que teoría",
-    text: "Ningún framework reemplaza a un producto funcionando. Preferimos entregar algo real esta semana que un plan perfecto en tres meses.",
-  },
-  {
-    title: "Nos quedamos",
-    text: "No cobramos el entregable y desaparecemos. Seguimos ahí cuando toca corregir, escalar o empezar de nuevo.",
-  },
-];
+export function Manifesto({ dict }: { dict: Dictionary }) {
+  const { manifesto, brand } = dict;
 
-export function Manifesto() {
   return (
     <section
       id="manifiesto"
@@ -30,34 +17,31 @@ export function Manifesto() {
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <Reveal>
           <div className="flex justify-center">
-            <SectionLabel index="06">Manifiesto</SectionLabel>
+            <SectionLabel index="06">{manifesto.label}</SectionLabel>
           </div>
         </Reveal>
 
         <Reveal delay={90}>
           <h2 className="display-tight mt-10 text-title">
-            No somos una{" "}
+            {manifesto.titlePrefix}
             <span className="bg-gradient-to-br from-accent via-accent to-accent-deep bg-clip-text text-transparent">
-              f*cking
-            </span>{" "}
-            agencia.
+              {manifesto.titleAccent}
+            </span>
+            {manifesto.titleSuffix}
           </h2>
         </Reveal>
 
         <Reveal delay={170}>
           <div className="mx-auto mt-9 max-w-2xl space-y-5 text-base leading-relaxed text-muted sm:text-lg">
-            <p>
-              Las agencias facturan y desaparecen. Te venden un entregable, lo cobran, cierran
-              el proyecto y tu negocio queda exactamente igual de solo que antes.
-            </p>
-            <p className="text-cream">
-              Nosotros nos quedamos hasta que lo logras. Eso es todo lo que nos separa de ellas.
-            </p>
+            {manifesto.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <p className="text-cream">{manifesto.paragraphStrong}</p>
           </div>
         </Reveal>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border hairline bg-cream/[0.06] text-left sm:grid-cols-3">
-          {beliefs.map((belief, index) => (
+          {manifesto.beliefs.map((belief, index) => (
             <Reveal key={belief.title} delay={250 + index * 100} className="bg-ink/85">
               <div className="h-full px-6 py-7">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
@@ -72,12 +56,10 @@ export function Manifesto() {
 
         <Reveal delay={300}>
           <p className="display-tight mt-16 text-3xl text-cream sm:text-4xl">
-            {site.mission.replace(".", "")}
+            {brand.mission.replace(".", "")}
             <span className="text-accent">.</span>
           </p>
-          <p className="mt-4 text-sm text-faint">
-            Por eso existimos: para que crecer deje de ser un acto solitario.
-          </p>
+          <p className="mt-4 text-sm text-faint">{manifesto.closing}</p>
         </Reveal>
       </div>
     </section>

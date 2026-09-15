@@ -21,10 +21,27 @@ Otros comandos: `npm run build` (build de producción), `npm start` (servir el b
 | Quiero cambiar…                    | Archivo                                       |
 | ---------------------------------- | --------------------------------------------- |
 | Correo, enlace de agenda, redes    | `lib/site.ts`                                  |
-| Copy de una sección                | `components/sections/<Sección>.tsx`            |
+| Cualquier texto del sitio          | `lib/dictionaries/es.ts` y `lib/dictionaries/en.ts` |
+| Maquetación de una sección         | `components/sections/<Sección>.tsx`            |
 | Logo (PNG/SVG)                     | `public/logo/` + `components/ui/Logo.tsx`      |
 | Colores y tipografía               | `app/globals.css` (bloque `@theme`)            |
 | Destino de los formularios         | variable `NEXT_PUBLIC_LEAD_ENDPOINT`           |
+
+## Español e inglés
+
+El sitio vive en dos rutas: `/es` (por defecto, `cowth.co` redirige ahí) y `/en`, con un
+selector en el navbar. Cada idioma es una URL propia con su canonical y sus `hreflang`,
+así que Google indexa las dos y un cliente de USA puede llegar directo a la versión en
+inglés.
+
+Todo el copy está en `lib/dictionaries/`. `es.ts` es la fuente de verdad: define la forma
+del diccionario, y TypeScript falla el build si `en.ts` deja de tener exactamente las
+mismas claves. Es decir, **no se puede olvidar traducir algo**: si añades un texto en
+español, el build no pasa hasta que exista su versión en inglés.
+
+Las secciones no llevan texto escrito dentro; reciben `dict` como prop desde
+`app/[lang]/page.tsx`. Para añadir un idioma: crea el diccionario, agrégalo a
+`locales` en `lib/i18n.ts` y listo, las rutas y el sitemap se generan solos.
 
 ### Activar los formularios
 

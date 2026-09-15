@@ -8,6 +8,13 @@ export type Lead = {
 
 export type LeadResult = { ok: true } | { ok: false; error: string };
 
+/** Los mensajes llegan del diccionario del idioma activo. */
+export type LeadErrors = {
+  errorEmail: string;
+  errorName: string;
+  errorGeneric: string;
+};
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 
 export function validateEmail(value: string): boolean {
@@ -35,13 +42,13 @@ export function validateName(value: string): boolean {
  * configurado por variable de entorno sobre HTTPS; no se persiste ni se
  * registra en logs del cliente.
  */
-export async function submitLead(lead: Lead): Promise<LeadResult> {
+export async function submitLead(lead: Lead, errors: LeadErrors): Promise<LeadResult> {
   if (!validateEmail(lead.email)) {
-    return { ok: false, error: "Revisa el correo, parece incompleto." };
+    return { ok: false, error: errors.errorEmail };
   }
 
   if (lead.name !== undefined && !validateName(lead.name)) {
-    return { ok: false, error: "Escribe tu nombre para personalizar el envío." };
+    return { ok: false, error: errors.errorName };
   }
 
   const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
@@ -63,11 +70,11 @@ export async function submitLead(lead: Lead): Promise<LeadResult> {
     });
 
     if (!response.ok) {
-      return { ok: false, error: "No pudimos registrarte. Inténtalo de nuevo." };
+      return { ok: false, error: errors.errorGeneric };
     }
 
     return { ok: true };
   } catch {
-    return { ok: false, error: "No pudimos registrarte. Inténtalo de nuevo." };
+    return { ok: false, error: errors.errorGeneric };
   }
 }

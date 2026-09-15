@@ -1,9 +1,25 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
+import { getDictionary, isLocale, locales } from "@/lib/i18n";
 
-export const alt = `${site.name} — ${site.descriptor}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
+
+export async function generateImageMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang: raw } = await params;
+  const lang = isLocale(raw) ? raw : "es";
+  const dict = getDictionary(lang);
+
+  return [{ id: lang, size, contentType, alt: `${site.name} — ${dict.meta.ogDescriptor}` }];
+}
 
 /** Sora extrabold para que la OG use la tipografía de marca; si falla la red, ImageResponse usa su fuente por defecto. */
 async function loadSora(): Promise<ArrayBuffer | null> {
@@ -22,7 +38,14 @@ async function loadSora(): Promise<ArrayBuffer | null> {
   }
 }
 
-export default async function OpengraphImage() {
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang: raw } = await params;
+  const lang = isLocale(raw) ? raw : "es";
+  const dict = getDictionary(lang);
   const sora = await loadSora();
 
   return new ImageResponse(
@@ -41,8 +64,8 @@ export default async function OpengraphImage() {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <div style={{ width: 10, height: 10, borderRadius: 999, background: "#22E38A" }} />
-          <div style={{ color: "#6E6E6E", fontSize: 24, letterSpacing: 6 }}>
-            ECOSISTEMA DE CRECIMIENTO EMPRESARIAL
+          <div style={{ color: "#8A8A8A", fontSize: 24, letterSpacing: 6 }}>
+            {dict.meta.ogEyebrow}
           </div>
         </div>
 
@@ -58,18 +81,28 @@ export default async function OpengraphImage() {
               whiteSpace: "nowrap",
             }}
           >
-            Nadie crece solo
+            {dict.meta.ogTitle}
             <span style={{ color: "#22E38A" }}>.</span>
           </div>
-          <div style={{ color: "#9B9B9B", fontSize: 34, marginTop: 28 }}>{site.descriptor}</div>
+          <div style={{ color: "#A8A8A8", fontSize: 34, marginTop: 28 }}>
+            {dict.meta.ogDescriptor}
+          </div>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ color: "#FAFAFA", fontSize: 44, fontWeight: 800, letterSpacing: -2, display: "flex" }}>
+          <div
+            style={{
+              color: "#FAFAFA",
+              fontSize: 44,
+              fontWeight: 800,
+              letterSpacing: -2,
+              display: "flex",
+            }}
+          >
             cowth
             <span style={{ color: "#22E38A" }}>.</span>
           </div>
-          <div style={{ color: "#6E6E6E", fontSize: 26 }}>cowth.co</div>
+          <div style={{ color: "#8A8A8A", fontSize: 26 }}>cowth.co</div>
         </div>
       </div>
     ),

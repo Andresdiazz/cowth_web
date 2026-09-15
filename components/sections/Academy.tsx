@@ -2,42 +2,30 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import type { Dictionary } from "@/lib/i18n";
 
-const chapters = [
-  "Por qué la mayoría de negocios se estanca antes del año dos",
-  "Las cuatro decisiones que definen si creces o sobrevives",
-  "Cómo saber qué tecnología necesitas (y cuál no)",
-  "Un plan de 90 días con lo que sí mueve la aguja",
-];
+export function Academy({ dict }: { dict: Dictionary }) {
+  const { academy } = dict;
 
-export function Academy() {
   return (
     <section id="academy" className="border-t hairline py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionLabel index="04">Cowth Academy</SectionLabel>
+          <SectionLabel index="04">{academy.label}</SectionLabel>
         </Reveal>
 
         <div className="mt-12 grid gap-14 md:grid-cols-12 md:gap-16">
           <Reveal delay={60} className="md:col-span-6">
-            <h2 className="display-tight text-title">
-              Formación que se aplica el lunes.
-            </h2>
-            <p className="mt-7 text-base leading-relaxed text-muted sm:text-lg">
-              El brazo educativo de Cowth. Sin teoría de manual ni promesas de libertad
-              financiera: lo que funciona en negocios reales de habla hispana, explicado para
-              que lo ejecutes tú.
-            </p>
+            <h2 className="display-tight text-title">{academy.title}</h2>
+            <p className="mt-7 text-base leading-relaxed text-muted sm:text-lg">{academy.body}</p>
 
             <div className="mt-10 border-t hairline pt-8">
               <p className="font-mono text-xs uppercase tracking-[0.28em] text-faint">
-                E-book gratuito
+                {academy.ebookLabel}
               </p>
-              <p className="display-tight mt-4 text-2xl text-cream">
-                Crecer acompañado: la guía para los primeros 90 días.
-              </p>
+              <p className="display-tight mt-4 text-2xl text-cream">{academy.ebookTitle}</p>
               <ul className="mt-6 space-y-3">
-                {chapters.map((chapter) => (
+                {academy.chapters.map((chapter) => (
                   <li key={chapter} className="flex gap-3 text-sm leading-relaxed text-muted">
                     <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                     {chapter}
@@ -49,17 +37,16 @@ export function Academy() {
 
           <Reveal delay={140} className="md:col-span-6">
             <SpotlightCard className="rounded-2xl p-7 sm:p-9">
-              <h3 className="display-tight text-xl text-cream">Descárgalo gratis</h3>
-              <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">
-                Estamos terminando de conectar la descarga automática.
-              </p>
+              <h3 className="display-tight text-xl text-cream">{academy.card.title}</h3>
+              <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">{academy.card.body}</p>
               <LeadForm
                 source="academy-ebook"
                 withName
-                submitLabel="Quiero el e-book"
-                successTitle="Listo. Revisa tu correo."
-                successBody="Te enviamos el e-book. Si no aparece en unos minutos, mira en spam o promociones."
-                note="Nada de spam. Solo contenido útil y puedes darte de baja cuando quieras."
+                strings={dict.form}
+                submitLabel={academy.card.submitLabel}
+                successTitle={academy.card.successTitle}
+                successBody={academy.card.successBody}
+                note={academy.card.note}
               />
             </SpotlightCard>
           </Reveal>

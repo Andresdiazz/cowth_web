@@ -3,62 +3,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { Terminal } from "@/components/ui/Terminal";
-import { site } from "@/lib/site";
+import type { Dictionary } from "@/lib/i18n";
 
-type Line = {
-  id: string;
-  index: string;
-  name: string;
-  promise: string;
-  tiers: { name: string; detail: string }[];
-  bullets: string[];
-};
+export function Lab({ dict }: { dict: Dictionary }) {
+  const { lab, brand } = dict;
 
-const lines: Line[] = [
-  {
-    id: "web",
-    index: "01",
-    name: "Línea Web",
-    promise:
-      "Tu negocio, explicado bien y disponible 24/7. Una web que convierte visitas en conversaciones.",
-    tiers: [
-      {
-        name: "Web Express",
-        detail: "Landing o sitio de una página, en línea en días. Ideal para validar y empezar a vender.",
-      },
-      {
-        name: "Web a Medida",
-        detail: "Sitio completo con las secciones, integraciones y contenido que tu operación exige.",
-      },
-    ],
-    bullets: ["Diseño propio, no plantilla", "Optimizada para buscadores", "Métricas y formularios conectados"],
-  },
-  {
-    id: "ecommerce",
-    index: "02",
-    name: "Línea E-commerce",
-    promise: "Vender en línea sin fricción: catálogo, pagos y envíos funcionando de verdad.",
-    tiers: [
-      {
-        name: "Tienda Express",
-        detail: "Shopify configurado, con tu marca, pasarela de pago y logística lista para operar.",
-      },
-      {
-        name: "E-commerce a Medida",
-        detail: "Tienda con reglas propias: inventario, mayoristas, suscripciones o integraciones con tu ERP.",
-      },
-    ],
-    bullets: ["Checkout optimizado", "Pagos locales de cada país", "Preparada para escalar campañas"],
-  },
-];
-
-const appsBullets = [
-  "Un solo código para iOS, Android y web",
-  "Del prototipo a las tiendas, con acompañamiento",
-  "Producto pensado para tu operación real, no un demo",
-];
-
-export function Lab() {
   return (
     <section
       id="lab"
@@ -72,29 +21,23 @@ export function Lab() {
 
       <div className="relative mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionLabel index="02">Cowth Lab · Estudio de tecnología</SectionLabel>
+          <SectionLabel index="02">{lab.label}</SectionLabel>
         </Reveal>
 
         <div className="mt-12 grid gap-10 md:grid-cols-12">
           <Reveal delay={70} className="md:col-span-7">
-            <h2 className="display-tight text-title">
-              Crecemos contigo: desde tu primera web hasta tu software a medida.
-            </h2>
+            <h2 className="display-tight text-title">{lab.title}</h2>
           </Reveal>
           <Reveal delay={150} className="md:col-span-5 md:pt-3">
-            <p className="text-base leading-relaxed text-muted sm:text-lg">
-              El brazo de producto digital de Cowth. Diseñamos y construimos la tecnología que
-              tu negocio necesita en cada etapa, y nos quedamos para que siga funcionando.
-              Entregamos producto en operación, no archivos.
-            </p>
+            <p className="text-base leading-relaxed text-muted sm:text-lg">{lab.body}</p>
             <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
-              {site.tagline}
+              {brand.tagline}
             </p>
           </Reveal>
         </div>
 
         <div className="mt-16 grid gap-5 md:grid-cols-2">
-          {lines.map((line, index) => (
+          {lab.lines.map((line, index) => (
             <Reveal key={line.id} delay={index * 110}>
               <SpotlightCard as="article" className="flex h-full flex-col rounded-2xl p-7 sm:p-9">
                 <div className="flex items-start justify-between gap-4">
@@ -144,10 +87,7 @@ export function Lab() {
 
         {/* Línea Producto & Apps: la apuesta principal del Lab. */}
         <Reveal delay={140}>
-          <SpotlightCard
-            as="article"
-            className="mt-5 rounded-3xl border-accent/25 p-7 sm:p-10"
-          >
+          <SpotlightCard as="article" className="mt-5 rounded-3xl border-accent/25 p-7 sm:p-10">
             <div
               aria-hidden
               className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-accent/10 blur-[110px]"
@@ -155,19 +95,17 @@ export function Lab() {
             <div className="relative grid gap-10 md:grid-cols-12 md:gap-12">
               <div className="md:col-span-7">
                 <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.08] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
-                  Línea insignia
+                  {lab.featured.badge}
                 </p>
                 <h3 className="display-tight mt-5 text-3xl text-cream sm:text-4xl lg:text-5xl">
-                  Producto &amp; Apps
+                  {lab.featured.title}
                 </h3>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-                  Aplicaciones a medida construidas en Flutter: un solo código que corre en iOS,
-                  Android y web. Un producto, tres plataformas, una sola inversión y un equipo
-                  que lo evoluciona contigo.
+                  {lab.featured.body}
                 </p>
 
                 <ul className="mt-8 space-y-4">
-                  {appsBullets.map((bullet) => (
+                  {lab.featured.bullets.map((bullet) => (
                     <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-cream">
                       <span
                         aria-hidden
@@ -179,24 +117,23 @@ export function Lab() {
                 </ul>
 
                 <div className="mt-9">
-                  <BookingButton>Agenda un diagnóstico</BookingButton>
+                  <BookingButton>{lab.featured.cta}</BookingButton>
                 </div>
               </div>
 
               <div className="flex flex-col justify-center md:col-span-5">
                 <Terminal
-                  title="cowth ~ producto"
+                  title={lab.featured.terminalTitle}
                   lines={[
                     { kind: "command", text: "cowth build --release" },
-                    { kind: "output", text: "un código base · tres plataformas" },
+                    { kind: "output", text: lab.featured.terminalOutput },
                     { kind: "success", text: "✓ iOS      App Store" },
                     { kind: "success", text: "✓ Android  Google Play" },
-                    { kind: "success", text: "✓ Web      producción" },
+                    { kind: "success", text: lab.featured.terminalWeb },
                   ]}
                 />
                 <p className="mt-4 text-xs leading-relaxed text-faint">
-                  Una base de código, tres plataformas: menos costo de mantenimiento y una
-                  experiencia consistente para tus usuarios.
+                  {lab.featured.terminalNote}
                 </p>
               </div>
             </div>
@@ -206,14 +143,11 @@ export function Lab() {
         <Reveal delay={80}>
           <SpotlightCard className="mt-5 flex flex-col gap-6 rounded-2xl p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
             <div className="max-w-2xl">
-              <h3 className="display-tight text-xl text-cream">Soporte &amp; Evolución</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                El lanzamiento es el punto de partida. Plan mensual de mantenimiento, mejoras y
-                nuevas funciones para que tu producto siga al ritmo del negocio.
-              </p>
+              <h3 className="display-tight text-xl text-cream">{lab.support.title}</h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted">{lab.support.body}</p>
             </div>
             <p className="shrink-0 font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
-              Acompañamiento continuo
+              {lab.support.badge}
             </p>
           </SpotlightCard>
         </Reveal>

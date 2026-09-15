@@ -1,24 +1,29 @@
 import { Logo } from "@/components/ui/Logo";
 import { site } from "@/lib/site";
+import type { Dictionary } from "@/lib/i18n";
 
-export function Footer() {
+export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="grain relative overflow-hidden border-t hairline">
       <div className="relative mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo height={28} />
-            <p className="display-tight mt-5 max-w-xs text-lg text-cream">{site.tagline}</p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{site.descriptor}</p>
+            <p className="display-tight mt-5 max-w-xs text-lg text-cream">{dict.brand.tagline}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+              {dict.brand.descriptor}
+            </p>
             <p className="mt-6 font-mono text-xs uppercase tracking-[0.28em] text-accent">
-              {site.mission}
+              {dict.brand.mission}
             </p>
           </div>
 
-          <nav aria-label="Secciones" className="md:col-span-3">
-            <h2 className="font-mono text-xs uppercase tracking-[0.28em] text-faint">Ecosistema</h2>
+          <nav aria-label={dict.footer.sectionsLabel} className="md:col-span-3">
+            <h2 className="font-mono text-xs uppercase tracking-[0.28em] text-faint">
+              {dict.footer.navTitle}
+            </h2>
             <ul className="mt-5 space-y-3">
-              {site.nav.map((item) => (
+              {dict.nav.items.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
@@ -32,7 +37,9 @@ export function Footer() {
           </nav>
 
           <div className="md:col-span-4">
-            <h2 className="font-mono text-xs uppercase tracking-[0.28em] text-faint">Contacto</h2>
+            <h2 className="font-mono text-xs uppercase tracking-[0.28em] text-faint">
+              {dict.footer.contactTitle}
+            </h2>
             <a
               href={`mailto:${site.email}`}
               className="mt-5 block text-sm text-cream transition-colors duration-200 hover:text-accent"
@@ -56,10 +63,9 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-faint">
-            © {new Date().getFullYear()} Cowth. Hecho en Latinoamérica, para el mundo que crece
-            en español.
+            © {new Date().getFullYear()} Cowth. {dict.footer.copyright}
           </p>
-          <p className="text-xs text-faint">co + growth · crecemos contigo</p>
+          <p className="text-xs text-faint">{dict.footer.closing}</p>
         </div>
       </div>
     </footer>

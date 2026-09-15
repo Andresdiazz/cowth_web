@@ -1,15 +1,11 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { BookingButton } from "@/components/ui/BookingButton";
 import { Enter } from "@/components/ui/Enter";
-import { site } from "@/lib/site";
+import type { Dictionary } from "@/lib/i18n";
 
-const capabilities = [
-  { label: "Web & E-commerce", detail: "De landing express a plataforma a medida" },
-  { label: "Apps en Flutter", detail: "Un código para iOS, Android y web" },
-  { label: "Soporte continuo", detail: "Nos quedamos después del lanzamiento" },
-];
+export function Hero({ dict }: { dict: Dictionary }) {
+  const { hero, brand } = dict;
 
-export function Hero() {
   return (
     <section
       id="top"
@@ -30,18 +26,18 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span>Ecosistema de crecimiento empresarial</span>
+            <span>{hero.eyebrow}</span>
           </p>
         </Enter>
 
         <Enter delay={90}>
           <h1 className="display-tight mt-8 text-display">
-            <span className="block text-cream/95">No somos tu agencia.</span>
+            <span className="block text-cream/95">{hero.titleLine1}</span>
             <span className="mt-1 block">
-              Somos tu{" "}
+              {hero.titleLine2Prefix}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-br from-accent via-accent to-accent-deep bg-clip-text text-transparent">
-                  socio
+                  {hero.titleAccent}
                 </span>
                 <span aria-hidden className="text-accent">
                   .
@@ -58,24 +54,23 @@ export function Hero() {
         <div className="mt-14 grid gap-10 border-t hairline pt-10 md:grid-cols-12 md:gap-8">
           <Enter delay={170} className="md:col-span-7">
             <p className="max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-              {site.descriptor}{" "}
-              <span className="text-cream">Tecnología que resuelve</span>, formación que se
-              aplica y una red que sostiene cuando el camino se pone difícil. Crecemos contigo.
+              {brand.descriptor} <span className="text-cream">{hero.bodyStrong}</span>
+              {hero.bodyRest}
             </p>
           </Enter>
 
           <Enter delay={250} className="md:col-span-5">
             <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
-              <BookingButton>Agenda una llamada</BookingButton>
+              <BookingButton>{hero.ctaPrimary}</BookingButton>
               <ButtonLink href="#academy" variant="secondary">
-                Descarga gratis
+                {hero.ctaSecondary}
               </ButtonLink>
             </div>
           </Enter>
         </div>
 
         <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border hairline bg-cream/[0.06] sm:grid-cols-3">
-          {capabilities.map((capability, index) => (
+          {hero.capabilities.map((capability, index) => (
             <Enter key={capability.label} delay={330 + index * 90} as="li" className="bg-ink/85">
               <div className="h-full px-6 py-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">

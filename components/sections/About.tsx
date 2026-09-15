@@ -1,64 +1,35 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import type { Dictionary } from "@/lib/i18n";
 
-const pillars = [
-  {
-    name: "Cowth Lab",
-    href: "#lab",
-    text: "Tecnología y producto digital. Tu web, tu tienda o tu app, construidas para vender.",
-  },
-  {
-    name: "Growth Partner",
-    href: "#growth",
-    text: "E-commerce que crece contigo. Montamos tu tienda y la escalamos: ganamos cuando tú ganas (fee + % de ventas).",
-  },
-  {
-    name: "Cowth Academy",
-    href: "#academy",
-    text: "Formación aplicada. Lo que necesitas saber para decidir mejor, sin humo.",
-  },
-  {
-    name: "Cowth Community",
-    href: "#community",
-    text: "La red que sostiene. Acompañamiento continuo con quienes están en lo mismo.",
-  },
-];
+export function About({ dict }: { dict: Dictionary }) {
+  const { about } = dict;
 
-export function About() {
   return (
     <section id="que-es" className="border-t hairline py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionLabel index="01">Qué es Cowth</SectionLabel>
+          <SectionLabel index="01">{about.label}</SectionLabel>
         </Reveal>
 
         <div className="mt-12 grid gap-14 md:grid-cols-12">
           <Reveal delay={60} className="md:col-span-7">
             <h2 className="display-tight text-title">
-              8 de cada 10 negocios cierran.
-              <span className="text-faint"> Casi nunca por falta de ganas.</span>
+              {about.titleStrong}
+              <span className="text-faint">{about.titleMuted}</span>
             </h2>
             <div className="mt-8 space-y-5 text-base leading-relaxed text-muted sm:text-lg">
-              <p>
-                Cierran por hacerlo todo en soledad: sin estructura, sin herramientas que
-                funcionen y sin nadie que ya haya pasado por ahí. La estadística no se rompe
-                con motivación, se rompe con compañía y ejecución.
-              </p>
-              <p>
-                Por eso Cowth no vende fórmulas para hacerte rico. Construimos contigo lo que
-                tu negocio necesita hoy, te damos el criterio para sostenerlo y la red para no
-                dudar solo en la próxima decisión difícil.
-              </p>
-              <p className="text-cream">
-                Co + growth. Crecer juntos. Esa es toda la tesis.
-              </p>
+              {about.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <p className="text-cream">{about.closing}</p>
             </div>
           </Reveal>
 
           <div className="md:col-span-5">
             <ul className="space-y-3">
-              {pillars.map((pillar, index) => (
+              {about.pillars.map((pillar, index) => (
                 <Reveal key={pillar.name} as="li" delay={140 + index * 90}>
                   {/* El enlace es la tarjeta completa: área de toque cómoda en móvil. */}
                   <SpotlightCard

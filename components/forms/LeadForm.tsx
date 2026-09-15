@@ -4,6 +4,7 @@ import { useId, useState, type FormEvent } from "react";
 import { submitLead, type LeadSource } from "@/lib/leads";
 import { ArrowIcon, Button } from "@/components/ui/Button";
 import { site } from "@/lib/site";
+import type { Dictionary } from "@/lib/i18n";
 
 /**
  * Mientras no haya destino real (Systeme.io), los formularios NO se envían:
@@ -15,9 +16,12 @@ import { site } from "@/lib/site";
  */
 const FORMS_ENABLED = false;
 
+type FormStrings = Dictionary["form"];
+
 type LeadFormProps = {
   source: LeadSource;
   withName?: boolean;
+  strings: FormStrings;
   submitLabel: string;
   successTitle: string;
   successBody: string;
@@ -25,25 +29,35 @@ type LeadFormProps = {
 };
 
 export function LeadForm(props: LeadFormProps) {
-  return FORMS_ENABLED ? <ActiveLeadForm {...props} /> : <ComingSoonForm withName={props.withName} />;
+  return FORMS_ENABLED ? (
+    <ActiveLeadForm {...props} />
+  ) : (
+    <ComingSoonForm withName={props.withName} strings={props.strings} />
+  );
 }
 
 const inputClass =
   "w-full rounded-xl border border-cream/12 bg-ink/60 px-4 py-3.5 text-[15px] text-cream placeholder:text-faint transition-colors duration-200 focus:border-accent/60 focus:outline-none";
 
 /** Estado honesto: se ve como el formulario final, pero no promete lo que no hace. */
-function ComingSoonForm({ withName = false }: { withName?: boolean }) {
+function ComingSoonForm({
+  withName = false,
+  strings,
+}: {
+  withName?: boolean;
+  strings: FormStrings;
+}) {
   return (
     <div className="space-y-3">
       <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.07] px-3 py-1 text-xs font-medium text-accent">
         <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
-        Muy pronto
+        {strings.soonBadge}
       </p>
 
       {withName && (
         <input
           type="text"
-          placeholder="Tu nombre"
+          placeholder={strings.namePlaceholder}
           disabled
           aria-hidden
           tabIndex={-1}
@@ -52,7 +66,7 @@ function ComingSoonForm({ withName = false }: { withName?: boolean }) {
       )}
       <input
         type="email"
-        placeholder="tucorreo@empresa.com"
+        placeholder={strings.emailPlaceholder}
         disabled
         aria-hidden
         tabIndex={-1}
@@ -60,19 +74,18 @@ function ComingSoonForm({ withName = false }: { withName?: boolean }) {
       />
 
       <Button type="button" disabled className="w-full sm:w-auto">
-        Disponible en breve
+        {strings.soonCta}
       </Button>
 
       <p className="pt-1 text-xs leading-relaxed text-faint">
-        Aún no tenemos la entrega automática conectada y preferimos decirlo a fingir que
-        funciona. Si lo quieres ya, escríbenos a{" "}
+        {strings.soonNoteBefore}
         <a
           href={`mailto:${site.email}`}
           className="text-muted underline decoration-cream/25 underline-offset-4 transition-colors hover:text-accent"
         >
           {site.email}
-        </a>{" "}
-        y te lo enviamos a mano.
+        </a>
+        {strings.soonNoteAfter}
       </p>
     </div>
   );
@@ -84,6 +97,7 @@ type Status = "idle" | "loading" | "success" | "error";
 function ActiveLeadForm({
   source,
   withName = false,
+  strings,
   submitLabel,
   successTitle,
   successBody,
@@ -101,11 +115,14 @@ function ActiveLeadForm({
     setStatus("loading");
     setError("");
 
-    const result = await submitLead({
-      email,
-      name: withName ? name : undefined,
-      source,
-    });
+    const result = await submitLead(
+      {
+        email,
+        name: withName ? name : undefined,
+        source,
+      },
+      strings,
+    );
 
     if (result.ok) {
       setStatus("success");
@@ -133,7 +150,7 @@ function ActiveLeadForm({
       {withName && (
         <div>
           <label htmlFor={nameId} className="sr-only">
-            Nombre
+            {strings.nameLabel}
           </label>
           <input
             id={nameId}
@@ -142,7 +159,7 @@ function ActiveLeadForm({
             autoComplete="given-name"
             required
             maxLength={80}
-            placeholder="Tu nombre"
+            placeholder={strings.namePlaceholder}
             value={name}
             onChange={(event) => setName(event.target.value)}
             className={inputClass}
@@ -152,7 +169,7 @@ function ActiveLeadForm({
 
       <div>
         <label htmlFor={emailId} className="sr-only">
-          Correo electrónico
+          {strings.emailLabel}
         </label>
         <input
           id={emailId}
@@ -161,7 +178,7 @@ function ActiveLeadForm({
           autoComplete="email"
           required
           maxLength={254}
-          placeholder="tucorreo@empresa.com"
+          placeholder={strings.emailPlaceholder}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           aria-invalid={status === "error"}
@@ -171,7 +188,7 @@ function ActiveLeadForm({
       </div>
 
       <Button type="submit" disabled={status === "loading"} className="w-full sm:w-auto">
-        {status === "loading" ? "Enviando…" : submitLabel}
+        {status === "loading" ? strings.sending : submitLabel}
         {status !== "loading" && <ArrowIcon />}
       </Button>
 
