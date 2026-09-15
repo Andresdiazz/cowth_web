@@ -42,7 +42,7 @@ export default async function OpengraphImage() {
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <div style={{ width: 10, height: 10, borderRadius: 999, background: "#22E38A" }} />
           <div style={{ color: "#6E6E6E", fontSize: 24, letterSpacing: 6 }}>
-            ECOSISTEMA DE CRECIMIENTO · EN ESPAÑOL
+            ECOSISTEMA DE CRECIMIENTO EMPRESARIAL
           </div>
         </div>
 
