@@ -1,4 +1,4 @@
-import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
@@ -48,7 +48,7 @@ const lines: Line[] = [
         detail: "Tienda con reglas propias: inventario, mayoristas, suscripciones o integraciones con tu ERP.",
       },
     ],
-    bullets: ["Checkout optimizado", "Pagos locales de LATAM", "Preparada para escalar campañas"],
+    bullets: ["Checkout optimizado", "Pagos locales de cada país", "Preparada para escalar campañas"],
   },
 ];
 
@@ -179,10 +179,7 @@ export function Lab() {
                 </ul>
 
                 <div className="mt-9">
-                  <ButtonLink href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-                    Agenda un diagnóstico
-                    <ArrowIcon />
-                  </ButtonLink>
+                  <BookingButton>Agenda un diagnóstico</BookingButton>
                 </div>
               </div>
 

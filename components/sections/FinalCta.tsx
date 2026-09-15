@@ -1,4 +1,4 @@
-import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
@@ -9,7 +9,7 @@ export function FinalCta() {
     <section id="contacto" className="border-t hairline bg-surface py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionLabel index="06">Contacto</SectionLabel>
+          <SectionLabel index="07">Contacto</SectionLabel>
         </Reveal>
 
         <div className="mt-12 grid gap-12 md:grid-cols-12">
@@ -29,10 +29,7 @@ export function FinalCta() {
 
           <Reveal delay={140} className="md:col-span-5">
             <div className="flex flex-col gap-4">
-              <ButtonLink href={site.bookingUrl} target="_blank" rel="noopener noreferrer">
-                Agenda una llamada
-                <ArrowIcon />
-              </ButtonLink>
+              <BookingButton>Agenda una llamada</BookingButton>
               <SpotlightCard
                 as="a"
                 href={`mailto:${site.email}`}

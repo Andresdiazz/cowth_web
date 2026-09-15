@@ -3,6 +3,17 @@
 import { useId, useState, type FormEvent } from "react";
 import { submitLead, type LeadSource } from "@/lib/leads";
 import { ArrowIcon, Button } from "@/components/ui/Button";
+import { site } from "@/lib/site";
+
+/**
+ * Mientras no haya destino real (Systeme.io), los formularios NO se envían:
+ * capturar correos que no se guardan en ningún lado es perder leads y
+ * mentirle al usuario con un falso "listo".
+ *
+ * Para activarlos: pon FORMS_ENABLED en true y define NEXT_PUBLIC_LEAD_ENDPOINT
+ * en el entorno. El flujo completo ya está implementado más abajo.
+ */
+const FORMS_ENABLED = false;
 
 type LeadFormProps = {
   source: LeadSource;
@@ -13,9 +24,64 @@ type LeadFormProps = {
   note?: string;
 };
 
+export function LeadForm(props: LeadFormProps) {
+  return FORMS_ENABLED ? <ActiveLeadForm {...props} /> : <ComingSoonForm withName={props.withName} />;
+}
+
+const inputClass =
+  "w-full rounded-xl border border-cream/12 bg-ink/60 px-4 py-3.5 text-[15px] text-cream placeholder:text-faint transition-colors duration-200 focus:border-accent/60 focus:outline-none";
+
+/** Estado honesto: se ve como el formulario final, pero no promete lo que no hace. */
+function ComingSoonForm({ withName = false }: { withName?: boolean }) {
+  return (
+    <div className="space-y-3">
+      <p className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.07] px-3 py-1 text-xs font-medium text-accent">
+        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
+        Muy pronto
+      </p>
+
+      {withName && (
+        <input
+          type="text"
+          placeholder="Tu nombre"
+          disabled
+          aria-hidden
+          tabIndex={-1}
+          className={`${inputClass} cursor-not-allowed opacity-45`}
+        />
+      )}
+      <input
+        type="email"
+        placeholder="tucorreo@empresa.com"
+        disabled
+        aria-hidden
+        tabIndex={-1}
+        className={`${inputClass} cursor-not-allowed opacity-45`}
+      />
+
+      <Button type="button" disabled className="w-full sm:w-auto">
+        Disponible en breve
+      </Button>
+
+      <p className="pt-1 text-xs leading-relaxed text-faint">
+        Aún no tenemos la entrega automática conectada y preferimos decirlo a fingir que
+        funciona. Si lo quieres ya, escríbenos a{" "}
+        <a
+          href={`mailto:${site.email}`}
+          className="text-muted underline decoration-cream/25 underline-offset-4 transition-colors hover:text-accent"
+        >
+          {site.email}
+        </a>{" "}
+        y te lo enviamos a mano.
+      </p>
+    </div>
+  );
+}
+
 type Status = "idle" | "loading" | "success" | "error";
 
-export function LeadForm({
+/** Flujo completo, listo para cuando exista el endpoint de Systeme.io. */
+function ActiveLeadForm({
   source,
   withName = false,
   submitLabel,
@@ -61,9 +127,6 @@ export function LeadForm({
       </div>
     );
   }
-
-  const inputClass =
-    "w-full rounded-xl border border-cream/12 bg-ink/60 px-4 py-3.5 text-[15px] text-cream placeholder:text-faint transition-colors duration-200 focus:border-accent/60 focus:outline-none";
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-3">

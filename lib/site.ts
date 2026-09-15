@@ -9,11 +9,11 @@ export const site = {
   mission: "Nadie crece solo.",
   descriptor: "El ecosistema donde los negocios crecen acompañados.",
   description:
-    "Cowth es el ecosistema de crecimiento para emprendedores de Latinoamérica: tecnología, formación y comunidad para que tu negocio crezca acompañado.",
-  // Reemplazar por el enlace real de Calendly cuando esté listo.
-  bookingUrl: "https://calendly.com/cowth/diagnostico",
+    "Cowth es el ecosistema de crecimiento para emprendedores de habla hispana: tecnología, formación y comunidad para que tu negocio crezca acompañado.",
+  bookingUrl: "https://calendar.app.google/8r6MisDthzUFogL19",
   nav: [
     { label: "Lab", href: "#lab" },
+    { label: "Growth", href: "#growth" },
     { label: "Academy", href: "#academy" },
     { label: "Community", href: "#community" },
     { label: "Contacto", href: "#contacto" },

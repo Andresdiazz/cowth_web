@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     "Cowth",
     "crecimiento empresarial",
     "emprendedores Latinoamérica",
+    "emprendedores España",
+    "negocios en español",
     "desarrollo web",
     "e-commerce",
     "apps a medida",

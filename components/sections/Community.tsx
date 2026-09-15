@@ -5,7 +5,7 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 const perks = [
   { title: "Mesa de trabajo", text: "Sesiones en vivo para resolver tu caso, no para escuchar teoría." },
-  { title: "Red real", text: "Emprendedores de LATAM que ya pasaron por donde tú estás pasando." },
+  { title: "Red real", text: "Emprendedores que ya pasaron por donde tú estás pasando." },
   { title: "Acompañamiento continuo", text: "Seguimiento a tus decisiones, no una clase que ves una vez." },
 ];
 
@@ -15,7 +15,7 @@ export function Community() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <div className="flex flex-wrap items-center gap-4">
-            <SectionLabel index="04">Cowth Community</SectionLabel>
+            <SectionLabel index="05">Cowth Community</SectionLabel>
             <span className="rounded-full border border-accent/30 bg-accent/[0.07] px-3 py-1 text-xs font-medium text-accent">
               Próximamente
             </span>
@@ -44,9 +44,10 @@ export function Community() {
 
           <Reveal delay={140} className="md:col-span-6">
             <SpotlightCard className="rounded-2xl p-7 sm:p-9">
-              <h3 className="display-tight text-xl text-cream">Entra a la lista de espera</h3>
+              <h3 className="display-tight text-xl text-cream">Lista de espera</h3>
               <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">
-                Los primeros en la lista entran antes y con condiciones de fundador.
+                Los primeros en la lista entran antes y con condiciones de fundador. Estamos
+                abriéndola.
               </p>
               <LeadForm
                 source="community-waitlist"

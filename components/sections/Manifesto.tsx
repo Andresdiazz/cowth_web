@@ -30,7 +30,7 @@ export function Manifesto() {
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <Reveal>
           <div className="flex justify-center">
-            <SectionLabel index="05">Manifiesto</SectionLabel>
+            <SectionLabel index="06">Manifiesto</SectionLabel>
           </div>
         </Reveal>
 

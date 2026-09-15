@@ -56,7 +56,8 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-faint">
-            © {new Date().getFullYear()} Cowth. Hecho en Latinoamérica.
+            © {new Date().getFullYear()} Cowth. Hecho en Latinoamérica, para el mundo que crece
+            en español.
           </p>
           <p className="text-xs text-faint">co + growth · crecemos contigo</p>
         </div>

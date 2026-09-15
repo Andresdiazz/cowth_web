@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/ui/Logo";
-import { ButtonLink } from "@/components/ui/Button";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { site } from "@/lib/site";
 
@@ -73,9 +73,9 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <ButtonLink href="#contacto" className="px-5 py-2.5">
+          <BookingButton withArrow={false} className="px-5 py-2.5">
             Hablemos
-          </ButtonLink>
+          </BookingButton>
         </div>
 
         <button
@@ -122,9 +122,7 @@ export function Navbar() {
           ))}
         </nav>
         <p className="mt-6 text-xs text-faint">{site.tagline}</p>
-        <ButtonLink href="#contacto" onClick={() => setOpen(false)} className="mt-4 w-full">
-          Hablemos
-        </ButtonLink>
+        <BookingButton className="mt-4 w-full">Hablemos</BookingButton>
       </div>
 
       <ScrollProgress />

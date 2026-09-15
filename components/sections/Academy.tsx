@@ -15,7 +15,7 @@ export function Academy() {
     <section id="academy" className="border-t hairline py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionLabel index="03">Cowth Academy</SectionLabel>
+          <SectionLabel index="04">Cowth Academy</SectionLabel>
         </Reveal>
 
         <div className="mt-12 grid gap-14 md:grid-cols-12 md:gap-16">
@@ -25,7 +25,7 @@ export function Academy() {
             </h2>
             <p className="mt-7 text-base leading-relaxed text-muted sm:text-lg">
               El brazo educativo de Cowth. Sin teoría de manual ni promesas de libertad
-              financiera: lo que funciona en negocios reales de Latinoamérica, explicado para
+              financiera: lo que funciona en negocios reales de habla hispana, explicado para
               que lo ejecutes tú.
             </p>
 
@@ -51,7 +51,7 @@ export function Academy() {
             <SpotlightCard className="rounded-2xl p-7 sm:p-9">
               <h3 className="display-tight text-xl text-cream">Descárgalo gratis</h3>
               <p className="mt-2.5 mb-7 text-sm leading-relaxed text-muted">
-                Déjanos tu nombre y correo. Te lo enviamos al instante.
+                Estamos terminando de conectar la descarga automática.
               </p>
               <LeadForm
                 source="academy-ebook"

@@ -1,4 +1,5 @@
-import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
+import { ButtonLink } from "@/components/ui/Button";
+import { BookingButton } from "@/components/ui/BookingButton";
 import { Enter } from "@/components/ui/Enter";
 import { site } from "@/lib/site";
 
@@ -29,11 +30,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span>
-              Ecosistema de crecimiento ·{" "}
-              <span className="sm:hidden">LATAM</span>
-              <span className="hidden sm:inline">Latinoamérica</span>
-            </span>
+            <span>Ecosistema de crecimiento · En español</span>
           </p>
         </Enter>
 
@@ -69,10 +66,7 @@ export function Hero() {
 
           <Enter delay={250} className="md:col-span-5">
             <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
-              <ButtonLink href="#lab">
-                Agenda una llamada
-                <ArrowIcon />
-              </ButtonLink>
+              <BookingButton>Agenda una llamada</BookingButton>
               <ButtonLink href="#academy" variant="secondary">
                 Descarga gratis
               </ButtonLink>

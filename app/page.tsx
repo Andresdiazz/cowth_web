@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Lab } from "@/components/sections/Lab";
+import { GrowthPartner } from "@/components/sections/GrowthPartner";
 import { Academy } from "@/components/sections/Academy";
 import { Community } from "@/components/sections/Community";
 import { Manifesto } from "@/components/sections/Manifesto";
@@ -17,7 +18,7 @@ const organizationSchema = {
   email: site.email,
   slogan: site.mission,
   description: site.description,
-  areaServed: "Latinoamérica",
+  areaServed: ["Latinoamérica", "España"],
 };
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         <Hero />
         <About />
         <Lab />
+        <GrowthPartner />
         <Academy />
         <Community />
         <Manifesto />

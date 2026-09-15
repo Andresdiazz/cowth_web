@@ -9,6 +9,11 @@ const pillars = [
     text: "Tecnología y producto digital. Tu web, tu tienda o tu app, construidas para vender.",
   },
   {
+    name: "Growth Partner",
+    href: "#growth",
+    text: "E-commerce que crece contigo. Montamos tu tienda y la escalamos: ganamos cuando tú ganas (fee + % de ventas).",
+  },
+  {
     name: "Cowth Academy",
     href: "#academy",
     text: "Formación aplicada. Lo que necesitas saber para decidir mejor, sin humo.",
