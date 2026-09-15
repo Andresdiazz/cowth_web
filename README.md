@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cowth — sitio oficial
 
-## Getting Started
+Landing de marca y captación para Cowth. _Nadie crece solo._
 
-First, run the development server:
+Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · sin dependencias extra.
+
+## Correr en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Otros comandos: `npm run build` (build de producción), `npm start` (servir el build),
+`npm run lint`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Qué tocar primero
 
-## Learn More
+| Quiero cambiar…                    | Archivo                                       |
+| ---------------------------------- | --------------------------------------------- |
+| Correo, enlace de Calendly, redes  | `lib/site.ts`                                  |
+| Copy de una sección                | `components/sections/<Sección>.tsx`            |
+| Logo (PNG/SVG)                     | `public/logo/` + `components/ui/Logo.tsx`      |
+| Colores y tipografía               | `app/globals.css` (bloque `@theme`)            |
+| Destino de los formularios         | variable `NEXT_PUBLIC_LEAD_ENDPOINT`           |
 
-To learn more about Next.js, take a look at the following resources:
+### Conectar los formularios
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Los formularios de Academy y Community validan y muestran estado de éxito en modo demo
+mientras no haya endpoint. Para conectarlos, copia `.env.example` a `.env.local` y define:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_PUBLIC_LEAD_ENDPOINT="https://formspree.io/f/xxxxxxx"
+```
 
-## Deploy on Vercel
+Toda la integración vive en `lib/leads.ts`; no hay que tocar los componentes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Logo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mientras `public/logo/` esté vacío, el sitio renderiza el wordmark tipográfico "cowth"
+en Sora extrabold con el punto verde. Ver `public/logo/README.md` para activar los
+archivos de imagen.
+
+## Desplegar en Vercel
+
+1. Sube el repo a GitHub:
+   ```bash
+   git add -A && git commit -m "Sitio Cowth v1"
+   git remote add origin https://github.com/<usuario>/cowth-web.git
+   git push -u origin main
+   ```
+2. En [vercel.com/new](https://vercel.com/new) importa el repositorio. Vercel detecta
+   Next.js solo: no cambies build command ni output directory.
+3. Si ya tienes endpoint de formularios, añádelo en **Settings → Environment Variables**
+   como `NEXT_PUBLIC_LEAD_ENDPOINT` (Production y Preview).
+4. Deploy. Cada push a `main` publica automáticamente.
+5. Dominio: **Settings → Domains → Add** `cowth.co`, y apunta el DNS según indique Vercel.
+6. Después de conectar el dominio, verifica que `url` en `lib/site.ts` sea el definitivo:
+   de ahí salen las URLs canónicas, el sitemap y las Open Graph.
+
+Alternativa por CLI: `npx vercel` (preview) y `npx vercel --prod` (producción).
