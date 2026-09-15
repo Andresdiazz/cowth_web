@@ -36,6 +36,17 @@
   }
 }
 
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes caret {
   0%,
   49% {
@@ -212,6 +223,12 @@
     transform: scaleX(1);
   }
 
+  /* Entrada del contenido visible al cargar. Es CSS puro: arranca en el primer
+     pintado sin esperar a la hidratación, así no retrasa el LCP. */
+  html[data-js] .enter {
+    animation: enter 0.9s var(--ease-out-soft) var(--enter-delay, 0ms) both;
+  }
+
   /* Sin JS el contenido se muestra tal cual: la animación solo existe si hay JS. */
   html[data-js] .reveal {
     opacity: 0;
@@ -235,10 +252,12 @@
     scroll-behavior: auto;
   }
 
-  html[data-js] .reveal {
+  html[data-js] .reveal,
+  html[data-js] .enter {
     opacity: 1;
     transform: none;
     transition: none;
+    animation: none;
   }
 
   .glass-hover:hover {

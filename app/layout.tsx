@@ -6,7 +6,9 @@ import { site } from "@/lib/site";
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  // El sitio solo usa Sora en extrabold (.display-tight): cargar más pesos
+  // sería descargar archivos que nunca se pintan.
+  weight: ["800"],
   display: "swap",
 });
 

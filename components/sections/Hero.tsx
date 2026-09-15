@@ -1,5 +1,5 @@
 import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
+import { Enter } from "@/components/ui/Enter";
 import { site } from "@/lib/site";
 
 const capabilities = [
@@ -23,8 +23,8 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6">
-        <Reveal>
-          <p className="inline-flex items-center gap-3 rounded-full border border-cream/10 bg-cream/[0.03] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-faint backdrop-blur-sm sm:text-xs">
+        <Enter>
+          <p className="inline-flex items-center gap-2.5 rounded-full border border-cream/10 bg-cream/[0.03] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-faint backdrop-blur-sm sm:gap-3 sm:text-xs sm:tracking-[0.24em]">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
@@ -35,9 +35,9 @@ export function Hero() {
               <span className="hidden sm:inline">Latinoamérica</span>
             </span>
           </p>
-        </Reveal>
+        </Enter>
 
-        <Reveal delay={90}>
+        <Enter delay={90}>
           <h1 className="display-tight mt-8 text-display">
             <span className="block text-cream/95">No somos tu agencia.</span>
             <span className="mt-1 block">
@@ -56,18 +56,18 @@ export function Hero() {
               </span>
             </span>
           </h1>
-        </Reveal>
+        </Enter>
 
         <div className="mt-14 grid gap-10 border-t hairline pt-10 md:grid-cols-12 md:gap-8">
-          <Reveal delay={170} className="md:col-span-7">
+          <Enter delay={170} className="md:col-span-7">
             <p className="max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
               {site.descriptor}{" "}
               <span className="text-cream">Tecnología que resuelve</span>, formación que se
               aplica y una red que sostiene cuando el camino se pone difícil. Crecemos contigo.
             </p>
-          </Reveal>
+          </Enter>
 
-          <Reveal delay={250} className="md:col-span-5">
+          <Enter delay={250} className="md:col-span-5">
             <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
               <ButtonLink href="#lab">
                 Agenda una llamada
@@ -77,12 +77,12 @@ export function Hero() {
                 Descarga gratis
               </ButtonLink>
             </div>
-          </Reveal>
+          </Enter>
         </div>
 
         <ul className="mt-16 grid gap-px overflow-hidden rounded-2xl border hairline bg-cream/[0.06] sm:grid-cols-3">
           {capabilities.map((capability, index) => (
-            <Reveal key={capability.label} delay={330 + index * 90} as="li" className="bg-ink/85">
+            <Enter key={capability.label} delay={330 + index * 90} as="li" className="bg-ink/85">
               <div className="h-full px-6 py-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-accent">
                   0{index + 1}
@@ -90,7 +90,7 @@ export function Hero() {
                 <p className="mt-3 text-sm font-medium text-cream">{capability.label}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted">{capability.detail}</p>
               </div>
-            </Reveal>
+            </Enter>
           ))}
         </ul>
       </div>
