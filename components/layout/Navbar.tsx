@@ -51,7 +51,7 @@ export function Navbar({ dict, lang }: NavbarProps) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || open
-          ? "border-b hairline bg-ink/70 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+          ? "border-b hairline bg-ink/95 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.9)] md:bg-ink/70 md:backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
@@ -114,7 +114,7 @@ export function Navbar({ dict, lang }: NavbarProps) {
       <div
         id="menu-movil"
         hidden={!open}
-        className="border-t hairline bg-ink/95 px-6 pb-8 pt-4 backdrop-blur-xl md:hidden"
+        className="border-t hairline bg-ink/95 px-6 pb-8 pt-4 md:hidden"
       >
         <nav aria-label={dict.nav.mobileNav} className="flex flex-col">
           {dict.nav.items.map((item) => (

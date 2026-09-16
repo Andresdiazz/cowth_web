@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import type { CSSProperties, ElementType, ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -9,39 +7,18 @@ type RevealProps = {
   className?: string;
 };
 
+/**
+ * Marca el elemento para la animación de entrada al hacer scroll.
+ *
+ * No lleva JavaScript: quien observa y revela es el script en línea de
+ * `app/[lang]/layout.tsx`, que corre al parsear el HTML. Cuando esta lógica
+ * vivía en un componente cliente, el contenido se quedaba invisible hasta
+ * que hidrataba React.
+ */
 export function Reveal({ children, as: Tag = "div", delay = 0, className = "" }: RevealProps) {
-  const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    // Navegador sin IntersectionObserver: mostrar el contenido en vez de dejarlo oculto.
-    if (typeof IntersectionObserver === "undefined") {
-      const frame = requestAnimationFrame(() => setVisible(true));
-      return () => cancelAnimationFrame(frame);
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <Tag
-      ref={ref}
-      data-visible={visible}
-      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      style={delay ? ({ "--reveal-delay": `${delay}ms` } as CSSProperties) : undefined}
       className={`reveal ${className}`}
     >
       {children}

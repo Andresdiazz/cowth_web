@@ -11,7 +11,7 @@ const variants: Record<Variant, string> = {
   primary:
     "sheen bg-accent text-ink shadow-[0_10px_40px_-14px_rgba(34,227,138,0.65)] hover:shadow-[0_16px_50px_-12px_rgba(34,227,138,0.85)]",
   secondary:
-    "border border-cream/15 bg-cream/[0.02] text-cream backdrop-blur-sm hover:border-accent/45 hover:bg-accent/[0.06] hover:text-accent",
+    "border border-cream/15 bg-cream/[0.02] text-cream hover:border-accent/45 hover:bg-accent/[0.06] hover:text-accent",
   ghost: "text-muted hover:text-cream",
 };
 

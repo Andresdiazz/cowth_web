@@ -15,8 +15,8 @@ export function Lab({ dict }: { dict: Dictionary }) {
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="tech-grid absolute inset-0 opacity-70" />
-        <div className="absolute right-[-12rem] top-4 h-[34rem] w-[34rem] rounded-full bg-accent/10 blur-[140px] animate-aurora-slow" />
-        <div className="absolute left-[-10rem] bottom-[-8rem] h-[26rem] w-[26rem] rounded-full bg-accent-deep/10 blur-[130px] animate-aurora" />
+        <div className="absolute right-[-12rem] top-4 h-[34rem] w-[34rem] rounded-full bg-accent/10 aurora-slow" />
+        <div className="absolute left-[-10rem] bottom-[-8rem] h-[26rem] w-[26rem] rounded-full bg-accent-deep/10 aurora" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6">
@@ -90,7 +90,7 @@ export function Lab({ dict }: { dict: Dictionary }) {
           <SpotlightCard as="article" className="mt-5 rounded-3xl border-accent/25 p-7 sm:p-10">
             <div
               aria-hidden
-              className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-accent/10 blur-[110px]"
+              className="pointer-events-none absolute right-[-8rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-accent/10 aurora-static"
             />
             <div className="relative grid gap-10 md:grid-cols-12 md:gap-12">
               <div className="md:col-span-7">

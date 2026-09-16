@@ -100,11 +100,20 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Marca que hay JS antes del primer pintado: sin esto las animaciones
-            de scroll dejarían el contenido invisible para bots o JS desactivado. */}
+        {/* Las animaciones de entrada viven aquí y no en React a propósito.
+            Ocultar el contenido con data-js y revelarlo desde un componente
+            hidratado dejaba las secciones en blanco hasta que el bundle
+            terminaba de descargarse: segundos en un móvil con datos.
+            Este script se ejecuta al parsear el HTML, sin esperar nada. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `document.documentElement.setAttribute("data-js","true")`,
+            __html: `(function(){try{var d=document;d.documentElement.setAttribute("data-js","true");
+function show(el){el.setAttribute("data-visible","true")}
+function init(){var els=d.querySelectorAll(".reveal");
+if(!("IntersectionObserver" in window)){Array.prototype.forEach.call(els,show);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target)}})},{threshold:0.15,rootMargin:"0px 0px -60px 0px"});
+Array.prototype.forEach.call(els,function(el){io.observe(el)})}
+if(d.readyState==="loading"){d.addEventListener("DOMContentLoaded",init)}else{init()}}catch(e){}})()`,
           }}
         />
       </head>

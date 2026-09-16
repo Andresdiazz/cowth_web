@@ -11,7 +11,7 @@ export function Manifesto({ dict }: { dict: Dictionary }) {
       className="grain relative isolate overflow-hidden border-t hairline py-28 sm:py-36"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/2 h-[30rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/9 blur-[150px] animate-aurora" />
+        <div className="absolute left-1/2 top-1/2 h-[30rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/9 aurora" />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-6 text-center">

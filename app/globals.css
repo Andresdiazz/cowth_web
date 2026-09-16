@@ -229,7 +229,12 @@
     animation: enter 0.9s var(--ease-out-soft) var(--enter-delay, 0ms) both;
   }
 
-  /* Sin JS el contenido se muestra tal cual: la animación solo existe si hay JS. */
+  /* Sin JS el contenido se muestra tal cual: la animación solo existe si hay JS.
+     Quien pone data-visible es el script en línea del layout, no React: así el
+     contenido aparece al terminar de parsear el HTML, sin esperar al bundle.
+
+     Sin `will-change`: había ~40 elementos con esta clase y cada uno se llevaba
+     su propia capa de composición, que en iOS acaba con la pestaña descartada. */
   html[data-js] .reveal {
     opacity: 0;
     transform: translateY(26px);
@@ -237,13 +242,45 @@
       opacity 0.9s var(--ease-out-soft),
       transform 0.9s var(--ease-out-soft);
     transition-delay: var(--reveal-delay, 0ms);
-    will-change: transform, opacity;
   }
 
   html[data-js] .reveal[data-visible="true"] {
     opacity: 1;
     transform: none;
-    will-change: auto;
+  }
+
+  /* Manchas de luz del fondo. El desenfoque vive aquí y no en utilidades sueltas
+     para poder abaratarlo entero en móvil desde un solo sitio. */
+  .aurora {
+    filter: blur(140px);
+    animation: var(--animate-aurora);
+  }
+
+  .aurora-slow {
+    filter: blur(140px);
+    animation: var(--animate-aurora-slow);
+  }
+
+  .aurora-static {
+    filter: blur(110px);
+  }
+}
+
+/* Móvil: los desenfoques grandes y los backdrop-filter son lo que más GPU y
+   memoria consumen. Con máscara radial el degradado se ve casi igual y no
+   cuesta prácticamente nada. */
+@media (max-width: 767px) {
+  .aurora,
+  .aurora-slow,
+  .aurora-static {
+    filter: none;
+    animation: none;
+    -webkit-mask-image: radial-gradient(closest-side, #000, transparent);
+    mask-image: radial-gradient(closest-side, #000, transparent);
+  }
+
+  .glass {
+    backdrop-filter: none;
   }
 }
 
