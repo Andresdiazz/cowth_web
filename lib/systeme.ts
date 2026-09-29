@@ -22,6 +22,11 @@ const TAG_ID_BY_SOURCE: Record<LeadSource, string | undefined> = {
   "kit-waitlist": process.env.SYSTEME_TAG_ID_KIT,
 };
 
+// El tag "Growth Partner" ya existe en Systeme.io (SYSTEME_TAG_ID_GROWTH en
+// .env.example) pero todavía no hay un formulario/LeadSource que lo use.
+// Cuando se construya esa sección, se agrega "growth-partner" a LeadSource
+// (lib/leads.ts) y su entrada aquí.
+
 const API_BASE = "https://api.systeme.io/api";
 
 type SystemeContactInput = {
