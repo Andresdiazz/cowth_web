@@ -7,14 +7,11 @@ import { site } from "@/lib/site";
 import type { Dictionary } from "@/lib/i18n";
 
 /**
- * Mientras no haya destino real (Systeme.io), los formularios NO se envían:
- * capturar correos que no se guardan en ningún lado es perder leads y
- * mentirle al usuario con un falso "listo".
- *
- * Para activarlos: pon FORMS_ENABLED en true y define NEXT_PUBLIC_LEAD_ENDPOINT
- * en el entorno. El flujo completo ya está implementado más abajo.
+ * El envío va a /api/lead → Systeme.io (ver lib/systeme.ts). Sin
+ * SYSTEME_API_KEY configurada esa ruta responde en modo demo: valida y
+ * muestra éxito, pero no guarda el lead en ningún lado.
  */
-const FORMS_ENABLED = false;
+const FORMS_ENABLED = true;
 
 type FormStrings = Dictionary["form"];
 

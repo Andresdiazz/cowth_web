@@ -25,7 +25,9 @@ Otros comandos: `npm run build` (build de producción), `npm start` (servir el b
 | Maquetación de una sección         | `components/sections/<Sección>.tsx`            |
 | Logo (PNG/SVG)                     | `public/logo/` + `components/ui/Logo.tsx`      |
 | Colores y tipografía               | `app/globals.css` (bloque `@theme`)            |
-| Destino de los formularios         | variable `NEXT_PUBLIC_LEAD_ENDPOINT`           |
+| Precios y copy de Cowth Lab        | `lib/dictionaries/es.ts` / `en.ts` → `labPage` |
+| Destino de los leads (Systeme.io)  | variables `SYSTEME_API_KEY` / `SYSTEME_TAG_ID_*` |
+| Número de WhatsApp                 | `lib/site.ts` → `whatsapp.number`              |
 
 ## Español e inglés
 
@@ -43,21 +45,41 @@ Las secciones no llevan texto escrito dentro; reciben `dict` como prop desde
 `app/[lang]/page.tsx`. Para añadir un idioma: crea el diccionario, agrégalo a
 `locales` en `lib/i18n.ts` y listo, las rutas y el sitemap se generan solos.
 
-### Activar los formularios
+### Cowth Lab (`/lab`) y captura de leads con Systeme.io
 
-Hoy los formularios de Academy y Community están deliberadamente inactivos: muestran un
-estado "Muy pronto" y ofrecen el correo como alternativa, porque todavía no hay dónde
-guardar los leads. El flujo completo (validación, envío, estado de éxito) ya está escrito.
+Landing dedicada del estudio de tecnología, con precios siempre visibles. Vive en
+`/es/lab` y `/en/lab` (y `/lab` a secas redirige a `/es/lab`).
 
-Para encenderlos cuando exista Systeme.io:
+**Modo pauta**: `/lab?src=ads` oculta el header, el footer y el botón flotante de
+WhatsApp, y deja un único CTA ("Ver precios"). Los parámetros `utm_source`,
+`utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `gclid`, `fbclid` y `src` que
+traiga la URL se leen en `app/[lang]/lab/page.tsx` y viajan hasta el envío del
+formulario. Para probarlo:
 
-1. En `components/forms/LeadForm.tsx`, pon `FORMS_ENABLED` en `true`.
-2. Copia `.env.example` a `.env.local` y define el endpoint:
-   ```bash
-   NEXT_PUBLIC_LEAD_ENDPOINT="https://tu-endpoint-de-systeme-o-formspree"
-   ```
+```
+http://localhost:3000/es/lab?src=ads&utm_source=facebook&utm_campaign=lanzamiento
+```
 
-La integración vive en `lib/leads.ts`; no hay que tocar las secciones.
+**Todos los leads del sitio** (Academy, Community, Lab, y la lista de espera del Kit en
+`/kit-90-dias`) pasan por la ruta interna `app/api/lead/route.ts`, que reenvía a
+Systeme.io desde el servidor (`lib/systeme.ts`) usando la API key con el header
+`X-API-Key`. La key nunca llega al navegador.
+
+Para activarlo:
+
+1. Copia `.env.example` a `.env.local`.
+2. En tu cuenta de Systeme.io, genera una key en **Perfil → Public API keys** y ponla en
+   `SYSTEME_API_KEY`.
+3. Crea un tag por origen (**Contacts → Tags**: Academy, Community, Lab, Kit-waitlist) y
+   copia el ID numérico de cada uno en `SYSTEME_TAG_ID_ACADEMY`, `SYSTEME_TAG_ID_COMMUNITY`,
+   `SYSTEME_TAG_ID_LAB` y `SYSTEME_TAG_ID_KIT`.
+
+Sin `SYSTEME_API_KEY`, `/api/lead` responde en modo demo: valida y muestra éxito, pero no
+guarda el lead en ningún lado — así la UI es revisable sin backend, igual que antes.
+`FORMS_ENABLED` en `components/forms/LeadForm.tsx` ya está en `true`.
+
+El número de WhatsApp del botón flotante y del CTA de `/lab` es un placeholder
+(`site.whatsapp.number` en `lib/site.ts`): reemplázalo por el real antes de publicar.
 
 ### Logo
 

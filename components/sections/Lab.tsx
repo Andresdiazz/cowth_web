@@ -1,11 +1,12 @@
+import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
 import { BookingButton } from "@/components/ui/BookingButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { Terminal } from "@/components/ui/Terminal";
-import type { Dictionary } from "@/lib/i18n";
+import type { Dictionary, Locale } from "@/lib/i18n";
 
-export function Lab({ dict }: { dict: Dictionary }) {
+export function Lab({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const { lab, brand } = dict;
 
   return (
@@ -150,6 +151,15 @@ export function Lab({ dict }: { dict: Dictionary }) {
               {lab.support.badge}
             </p>
           </SpotlightCard>
+        </Reveal>
+
+        <Reveal delay={90}>
+          <div className="mt-10 flex justify-center">
+            <ButtonLink href={`/${lang}/lab`} variant="secondary">
+              {lab.ctaLab}
+              <ArrowIcon />
+            </ButtonLink>
+          </div>
         </Reveal>
       </div>
     </section>

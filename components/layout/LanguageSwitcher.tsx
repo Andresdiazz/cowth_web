@@ -4,13 +4,15 @@ type LanguageSwitcherProps = {
   lang: Locale;
   label: string;
   className?: string;
+  /** Ruta después del idioma, ej. "/lab". Vacía para la home. */
+  basePath?: string;
 };
 
 /**
  * Enlaces reales entre /es y /en: cada idioma es una URL propia, así que
  * Google indexa ambos y el visitante puede compartir el enlace en su idioma.
  */
-export function LanguageSwitcher({ lang, label, className = "" }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ lang, label, className = "", basePath = "" }: LanguageSwitcherProps) {
   return (
     <div
       aria-label={label}
@@ -21,7 +23,7 @@ export function LanguageSwitcher({ lang, label, className = "" }: LanguageSwitch
         return (
           <a
             key={locale}
-            href={`/${locale}`}
+            href={`/${locale}${basePath}`}
             hrefLang={locale}
             aria-current={active ? "true" : undefined}
             title={localeNames[locale]}

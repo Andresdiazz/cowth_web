@@ -157,6 +157,7 @@ export const en: Dictionary = {
       body: "Launch is the starting line. A monthly plan for maintenance, improvements and new features so your product keeps pace with the business.",
       badge: "Ongoing partnership",
     },
+    ctaLab: "See Cowth Lab and pricing",
   },
 
   growth: {
@@ -286,6 +287,297 @@ export const en: Dictionary = {
     sectionsLabel: "Sections",
     copyright: "Built in Latin America, working in your time zone.",
     closing: "co + growth · we grow with you",
+  },
+
+  labPage: {
+    meta: {
+      title: "Cowth Lab — Public pricing for web development and custom apps",
+      description:
+        "Cowth's technology studio: published prices, code delivered in your name, and support after launch. Web, e-commerce, Flutter apps and ongoing evolution.",
+    },
+    header: {
+      backHome: "Back to Cowth",
+    },
+    hero: {
+      eyebrow: "The anti-agency",
+      title: "We charge for your growth, not for our activity.",
+      subtitle:
+        "A technology studio that publishes its prices, hands you the code, and stays until your business grows. The opposite of the agency that gives you a plan and disappears.",
+      ctaPrimary: "See pricing",
+      ctaWhatsapp: "Write to us on WhatsApp",
+    },
+    problem: {
+      title:
+        "Your last agency handed you a 40-page plan and your business is exactly the same. It wasn’t you. It was the model.",
+      body: "Agencies charge for activity: meetings, decks, deliverables. And in 2026 activity is worth less than ever. What they never gave you is scarce: a business that actually grows, and someone who stays to see it through.",
+    },
+    differentiators: {
+      label: "Why this is different",
+      items: [
+        {
+          title: "Public pricing.",
+          text: "The whole ladder is in the open. You don’t need a quote to know if you can afford it.",
+        },
+        {
+          title: "The code is yours.",
+          text: "What we build is delivered in your name. No technical lock-in.",
+        },
+        {
+          title: "We stay.",
+          text: "Support and evolution isn’t an add-on: it’s the core. We keep the product alive.",
+        },
+      ],
+    },
+    pricing: {
+      label: "Pricing",
+      title: "The pricing ladder.",
+      note: "The code is yours. Scope closed in writing: price and date fixed from day one.",
+      groups: [
+        {
+          icon: "🌐",
+          name: "Web Line",
+          tiers: [
+            {
+              name: "Landing Express",
+              detail: "1 page, premium template, built to convert.",
+              timeline: "3–5 days",
+              price: "From $900,000 COP (~$290 USD)",
+            },
+            {
+              name: "Web Express",
+              detail: "Several sections, self-editing panel, pixel + analytics.",
+              timeline: "5–10 days",
+              price: "From $1,900,000 COP (~$610 USD)",
+            },
+            {
+              name: "Custom Website",
+              detail: "Custom frontend, own design, integrations.",
+              timeline: "2–4 weeks",
+              price: "From $6,000,000 COP (~$1,935 USD)",
+            },
+          ],
+        },
+        {
+          icon: "🛒",
+          name: "E-commerce Line",
+          tiers: [
+            {
+              name: "Express Store (Shopify)",
+              detail:
+                "Theme, catalog, Wompi/Bold gateway, cash-on-delivery with WhatsApp confirmation.",
+              timeline: "1–2 weeks",
+              price: "From $3,900,000 COP (~$1,260 USD)",
+            },
+            {
+              name: "Custom Store",
+              detail: "Custom e-commerce (subscriptions/recurring billing, or off Shopify).",
+              timeline: "3–5 weeks",
+              price: "From $12,000,000 COP (~$3,870 USD)",
+            },
+          ],
+        },
+        {
+          icon: "📱",
+          name: "Product & Apps Line",
+          badge: "Flagship line",
+          tiers: [
+            {
+              name: "Essential · MVP",
+              detail: "Flutter app (iOS + Android + web), core flows, simple backend, publishing.",
+              timeline: "4–6 weeks",
+              price: "From $16,900,000 COP (~$5,450 USD)",
+            },
+            {
+              name: "Professional · Product",
+              detail:
+                "Full app + own backend + API + admin panel + integrations (payments, push, WhatsApp, CRM/ERP, tax) + roles + analytics + QA.",
+              timeline: "8–12 weeks",
+              price: "From $39,000,000 COP (~$12,600 USD)",
+            },
+            {
+              name: "Advanced · Product + Evolution",
+              detail: "Architecture built to scale (real time, offline, AI) + ongoing roadmap.",
+              timeline: "12–20 weeks",
+              price: "From $69,000,000 COP (~$22,300 USD)",
+            },
+          ],
+        },
+        {
+          icon: "🔁",
+          name: "Support & Evolution",
+          badge: "Ongoing partnership",
+          recurring: true,
+          tiers: [
+            { name: "Web Care", detail: "", timeline: "", price: "From $250,000 COP/mo (~$80 USD)" },
+            {
+              name: "Basic Support",
+              detail: "",
+              timeline: "",
+              price: "From $600,000 COP/mo (~$195 USD)",
+            },
+            {
+              name: "Professional Support (SLA)",
+              detail: "",
+              timeline: "",
+              price: "From $1,500,000 COP/mo (~$485 USD)",
+            },
+            {
+              name: "Evolution (retained dev)",
+              detail: "",
+              timeline: "",
+              price: "From $3,500,000 COP/mo (~$1,130 USD)",
+            },
+          ],
+        },
+      ],
+    },
+    anchorCase: {
+      label: "Proof cases",
+      viewGallery: "See screenshots",
+      close: "Close",
+      cases: [
+        {
+          name: "Koru Club de Bienestar",
+          platforms: "iOS · Android · Web dashboard",
+          body: "An app for club members: they check their classes, book, buy their membership and their supplements, all from the phone. On the other side, the club runs on its own dashboard for access control, class scheduling, accounting and metrics — one platform for members and for staff.",
+          logo: "/lab/cases/koru/logo.png",
+          images: [
+            { src: "/lab/cases/koru/app.png", width: 1320, height: 2868 },
+            { src: "/lab/cases/koru/dashboard.png", width: 1664, height: 1021 },
+          ],
+        },
+        {
+          name: "ForjaFit",
+          platforms: "iOS · Android",
+          body: "A training and nutrition app: it builds the workout and meal plan around your goals and your real activity, day by day. It tracks progress, builds the grocery list for meal prep, and adjusts macros between training and rest days. Users hit their goals faster than with any other alternative.",
+          logo: "/lab/cases/forjafit/logo.webp",
+          images: [
+            { src: "/lab/cases/forjafit/hoy.png", width: 1320, height: 2868 },
+            { src: "/lab/cases/forjafit/mercado.png", width: 1320, height: 2868 },
+          ],
+        },
+        {
+          name: "Bros Hub",
+          platforms: "Web (Admin + Creators)",
+          body: "A web platform for a creator agency: a recruiting CRM, roster stats, event and training management, and manager bonus/compensation calculations, all in one panel. On the creator side, each one sees their progress, upcoming events based on their level, and their pre-recorded training.",
+          logo: "/lab/cases/bros/logo.png",
+          images: [
+            { src: "/lab/cases/bros/dashboard.png", width: 1671, height: 1019 },
+            { src: "/lab/cases/bros/crm.png", width: 1668, height: 1023 },
+          ],
+        },
+      ],
+    },
+    howWeWork: {
+      label: "How we work",
+      title: "We start with a single sheet, not a two-week quote.",
+      stepLabel: "Step 1",
+      stepBody:
+        "A one-page scope template. If a single sheet can explain what happens the first time a user opens the app, the project is clear and the price is firm. Scope locked → price locked → date locked.",
+    },
+    // Example testimonials (generic attribution, no real names or
+    // companies): replace with real, authorized quotes as soon as you can
+    // get them. Never use a real person's name/title without their consent.
+    testimonials: {
+      label: "Testimonials",
+      items: [
+        {
+          quote:
+            "We used to compete with WhatsApp and a notebook. With the app we stopped losing bookings, and people finally see what they're paying for — their classes, their membership, all of it. Cowth didn't deliver a pretty app, they delivered an operation that runs itself.",
+          role: "Founder, wellness club",
+        },
+        {
+          quote:
+            "I told Cowth what I wanted and in weeks I had something people actually used, not a demo. The ones who started the plan hit their goal faster than with anything else we'd tried. That's not something you buy with marketing — you build it with product.",
+          role: "Founder, training and nutrition app",
+        },
+        {
+          quote:
+            "We ran creators, payments and events across five different spreadsheets. Now it's all in one panel and the team stopped chasing information. What I value most: six months later, Cowth still picks up when something breaks.",
+          role: "Operations manager, talent agency",
+        },
+      ],
+    },
+    about: {
+      label: "About the studio",
+      body: 'Run by Andrés Díaz: systems engineer, 9 years building mobile and web product. Custom Flutter apps. This isn’t "the nephew who knows computers" — it’s real product engineering, staying by your side.',
+    },
+    faq: {
+      label: "FAQ",
+      title: "Before you write to us",
+      items: [
+        {
+          q: "How is this different from an agency?",
+          a: "An agency charges you for the work and leaves once it delivers. We publish our prices, hand you the code in your name, and stay with support and evolution until the business grows.",
+        },
+        {
+          q: "How much does it cost?",
+          a: "It’s all published above. You don’t need a quote to know if it fits.",
+        },
+        {
+          q: "Do you work alone? Is that a risk?",
+          a: "Today Andrés runs it (9 years, Flutter). Scope is closed and in writing, with a firm price and date. The team grows when demand asks for it, not before.",
+        },
+        { q: "Who owns the code?", a: "You do. Always." },
+        {
+          q: "What happens after delivery?",
+          a: "That’s where it matters most: support and evolution keep the product alive.",
+        },
+        {
+          q: "Why act now?",
+          a: "Founder pricing for whoever joins this launch.",
+        },
+      ],
+    },
+    finalCta: {
+      label: "Contact",
+      title: "Tell us what you want to build.",
+      subtitle: "Founder pricing for the first projects of this launch.",
+      whatsapp: "Write to us on WhatsApp",
+      form: {
+        namePlaceholder: "Your name",
+        emailPlaceholder: "you@company.com",
+        whatsappPlaceholder: "WhatsApp (optional)",
+        needPlaceholder: "What do you want to build?",
+        submitLabel: "Send",
+        sending: "Sending…",
+        successTitle: "Done, we’ve got it.",
+        successBody: "We’ll reach out in the next few hours to talk about your project.",
+        errorEmail: "That email looks incomplete.",
+        errorName: "Add your name.",
+        errorNeed: "Tell us briefly what you want to build.",
+        errorGeneric: "We couldn’t send it. Try again or write to us on WhatsApp.",
+      },
+    },
+    footer: {
+      backHome: "Back to Cowth",
+    },
+  },
+
+  kitWaitlist: {
+    meta: {
+      title: "Grow-Alongside Kit — Waitlist",
+      description:
+        "The Grow-Alongside Kit is in the works. Join the waitlist and get in on founder terms.",
+    },
+    header: {
+      backHome: "Back to Cowth",
+    },
+    label: "Grow-Alongside Kit",
+    badge: "In the works",
+    title: "The Grow-Alongside Kit is on its way.",
+    body: "It's the natural follow-up to the e-book: the templates, tools and support to execute the first 90 days, not just read about them. It isn’t ready yet, but you can get in before anyone else.",
+    card: {
+      title: "Waitlist",
+      body: "The first on the list get in early and on founder terms.",
+      submitLabel: "Join the list",
+      successTitle: "You’re on the list.",
+      successBody: "We’ll let you know as soon as the Kit is ready, with your founder spot reserved.",
+      note: "We only write when there’s something real to say.",
+    },
+    footer: {
+      backHome: "Back to Cowth",
+    },
   },
 
   form: {

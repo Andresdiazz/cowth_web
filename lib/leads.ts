@@ -1,9 +1,21 @@
-export type LeadSource = "academy-ebook" | "community-waitlist";
+export type LeadSource =
+  | "academy-ebook"
+  | "community-waitlist"
+  | "lab-contact"
+  | "kit-waitlist";
+
+/** Parámetros de tráfico que se preservan del query string hasta el envío. */
+export type LeadTracking = Record<string, string>;
 
 export type Lead = {
   name?: string;
   email: string;
+  /** WhatsApp opcional; solo lo pide el formulario de Lab. */
+  phone?: string;
+  /** "Qué necesitas" del formulario de Lab; no aplica a Academy/Community. */
+  message?: string;
   source: LeadSource;
+  tracking?: LeadTracking;
 };
 
 export type LeadResult = { ok: true } | { ok: false; error: string };
@@ -30,17 +42,14 @@ export function validateName(value: string): boolean {
 /**
  * Punto único de integración con el proveedor de email marketing.
  *
- * Para conectar Formspree o Systeme.io basta con definir el endpoint público
- * en `.env.local`:
+ * El envío va al endpoint interno `/api/lead` (ver app/api/lead/route.ts),
+ * que reenvía a Systeme.io con la API key del servidor: la key nunca llega
+ * al cliente. Sin `SYSTEME_API_KEY` configurada, esa ruta responde en modo
+ * demo para que la UI sea revisable sin backend.
  *
- *   NEXT_PUBLIC_LEAD_ENDPOINT="https://formspree.io/f/xxxxxxx"
- *
- * Mientras no exista endpoint, el formulario valida y responde en modo demo
- * para que la UI sea revisable sin backend.
- *
- * SECURITY-REVIEW: maneja PII (nombre + email). Solo se envía a un endpoint
- * configurado por variable de entorno sobre HTTPS; no se persiste ni se
- * registra en logs del cliente.
+ * SECURITY-REVIEW: maneja PII (nombre + email + mensaje). Solo viaja a una
+ * ruta propia del mismo origen sobre HTTPS; no se persiste ni se registra en
+ * logs del cliente.
  */
 export async function submitLead(lead: Lead, errors: LeadErrors): Promise<LeadResult> {
   if (!validateEmail(lead.email)) {
@@ -51,21 +60,17 @@ export async function submitLead(lead: Lead, errors: LeadErrors): Promise<LeadRe
     return { ok: false, error: errors.errorName };
   }
 
-  const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT;
-
-  if (!endpoint) {
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    return { ok: true };
-  }
-
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch("/api/lead", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
         name: lead.name?.trim(),
         email: lead.email.trim().toLowerCase(),
+        phone: lead.phone?.trim(),
+        message: lead.message?.trim(),
         source: lead.source,
+        tracking: lead.tracking,
       }),
     });
 
