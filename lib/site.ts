@@ -14,9 +14,10 @@ export const site = {
     { label: "YouTube", href: "#" },
   ],
   whatsapp: {
-    // TODO: reemplazar por el número real de WhatsApp Business, en formato
-    // internacional sin "+" ni espacios (ej. "573001234567").
-    number: "573000000000",
+    // Número provisional (3502860084, Colombia). TODO: reemplazar por el de
+    // WhatsApp Business cuando exista, en formato internacional sin "+" ni
+    // espacios (ej. "573001234567").
+    number: "573502860084",
     message: "Hola, quiero información sobre Cowth Lab.",
   },
 } as const;
