@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     en: `${site.url}/en/lab`,
   };
 
+  const libro = {
+    es: `${site.url}/es/libro`,
+    en: `${site.url}/en/libro`,
+  };
+
   return locales.flatMap((lang) => [
     {
       url: `${site.url}/${lang}`,
@@ -27,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
       alternates: { languages: lab },
+    },
+    {
+      url: `${site.url}/${lang}/libro`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+      alternates: { languages: libro },
     },
   ]);
 }

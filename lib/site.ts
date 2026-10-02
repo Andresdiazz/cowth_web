@@ -25,3 +25,7 @@ export const site = {
 export function whatsappHref(message: string = site.whatsapp.message): string {
   return `https://wa.me/${site.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
+
+// TODO: coloca el PDF definitivo en public/ebook/ (ver public/ebook/README.md)
+// y ajusta esta ruta si usas otro nombre de archivo o un enlace externo.
+export const EBOOK_PDF_URL = "/ebook/crecer-acompanado.pdf";

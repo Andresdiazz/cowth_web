@@ -226,6 +226,7 @@ export const es = {
         "Te enviamos el e-book. Si no aparece en unos minutos, mira en spam o promociones.",
       note: "Nada de spam. Solo contenido útil y puedes darte de baja cuando quieras.",
     },
+    ctaLibro: "Descarga el e-book gratis",
   },
 
   community: {
@@ -581,6 +582,82 @@ export const es = {
       successTitle: "Estás dentro de la lista.",
       successBody: "Te avisamos apenas el Kit esté listo, con tu lugar de fundador reservado.",
       note: "Te escribimos solo cuando haya algo real que contarte.",
+    },
+    footer: {
+      backHome: "Volver a Cowth",
+    },
+  },
+
+  libroPage: {
+    meta: {
+      title: "Crecer acompañado — E-book gratis | Cowth Academy",
+      description:
+        "La guía sin humo para arrancar tu negocio con criterio: qué construir primero, qué ignorar, y cómo avanzar sin rendirte en el intento. Gratis, al correo.",
+    },
+    header: {
+      backHome: "Volver a Cowth",
+    },
+    hero: {
+      eyebrow: "E-book gratis · Cowth Academy",
+      title: "Emprender no tiene que ser en soledad.",
+      subtitle:
+        "Crecer acompañado es la guía sin humo para arrancar tu negocio con criterio: qué construir primero, qué ignorar, y cómo avanzar sin rendirte en el intento. Sin atajos mágicos. Sin gurús.",
+      submitLabel: "Descargar gratis",
+      microcopy: "Te lo enviamos al correo. Sin spam. Cancelas cuando quieras.",
+      coverPlaceholder: "[PENDIENTE: imagen de portada]",
+    },
+    problem: {
+      title: "El problema no es que te falten ganas. Es que estás haciéndolo solo.",
+      body: "La mayoría de emprendimientos no mueren por una mala idea. Mueren de agotamiento: una persona tratando de decidirlo todo, construirlo todo y sostenerlo todo, sin nadie que le diga por dónde. Con IA hoy cualquiera construye rápido… casi siempre la cosa equivocada. Este e-book es lo primero que no te deja solo.",
+    },
+    // [PENDIENTE: Andrés valida estos 4 bullets contra los capítulos reales
+    // del e-book y ajusta los títulos exactos si hace falta.]
+    learn: {
+      label: "Qué vas a aprender",
+      items: [
+        "Cómo saber qué tecnología necesitas y cuál no (antes de gastar un peso).",
+        "Qué construir primero cuando tienes mil ideas y poco tiempo.",
+        "Por qué las conversaciones —no el contenido— son lo que mueve la aguja al inicio.",
+        "Cómo avanzar 90 días con un plan simple, en vez de rendirte en la semana 3.",
+      ],
+    },
+    forWhom: {
+      label: "Para quién es",
+      items: [
+        "Para quien tiene una idea y no sabe por dónde empezar.",
+        "Para quien está validando algo sin renunciar todavía a su trabajo.",
+        "Para quien arranca sin capital y necesita foco, no otro curso motivacional.",
+      ],
+    },
+    credibility: {
+      label: "Quién lo escribe",
+      body: "Cowth Academy es la escuela del ecosistema Cowth. Lo escribe gente que construye producto de verdad todos los días (la misma que está detrás de Cowth Lab), no un coach que nunca lanzó nada. Nadie crece solo — y eso empieza por no dejarte solo con la teoría.",
+    },
+    finalCta: {
+      label: "Descarga",
+      title: "Descárgalo gratis y deja de hacerlo solo.",
+      submitLabel: "Descargar gratis",
+      microcopy: "Gratis. Al correo. Sin spam.",
+    },
+    footer: {
+      backHome: "Volver a Cowth",
+    },
+  },
+
+  libroGracias: {
+    meta: {
+      title: "Tu e-book va en camino — Cowth Academy",
+      description: "Descarga Crecer acompañado ahora mismo, o revisa tu correo en unos minutos.",
+    },
+    header: {
+      backHome: "Volver a Cowth",
+    },
+    title: "Listo. Tu e-book va en camino a tu correo.",
+    downloadCta: "Descargar ahora",
+    kit: {
+      title: "¿Quieres el Kit Crecer Acompañado?",
+      body: "Las plantillas para ejecutar el libro en 90 días, apenas salga. Entra a la lista de espera.",
+      cta: "Unirme a la lista de espera",
     },
     footer: {
       backHome: "Volver a Cowth",

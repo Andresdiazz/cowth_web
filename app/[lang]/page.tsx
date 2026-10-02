@@ -37,7 +37,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <About dict={dict} />
         <Lab dict={dict} lang={lang} />
         <GrowthPartner dict={dict} />
-        <Academy dict={dict} />
+        <Academy dict={dict} lang={lang} />
         <Community dict={dict} />
         <Manifesto dict={dict} />
         <FinalCta dict={dict} />

@@ -13,36 +13,12 @@ import { LabFaq } from "@/components/lab/LabFaq";
 import { LabFinalCta } from "@/components/lab/LabFinalCta";
 import { getDictionary, isLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import type { LeadTracking } from "@/lib/leads";
+import { readTracking } from "@/lib/tracking";
 
 type PageProps = {
   params: Promise<{ lang: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
-
-/** Parámetros de tráfico que se conservan de la URL hasta el envío del formulario (TAREA 3). */
-const TRACKING_KEYS = [
-  "src",
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_term",
-  "utm_content",
-  "gclid",
-  "fbclid",
-] as const;
-
-function readTracking(searchParams: Awaited<PageProps["searchParams"]>): LeadTracking | undefined {
-  const tracking: LeadTracking = {};
-
-  for (const key of TRACKING_KEYS) {
-    const value = searchParams[key];
-    const first = Array.isArray(value) ? value[0] : value;
-    if (first) tracking[key] = first;
-  }
-
-  return Object.keys(tracking).length > 0 ? tracking : undefined;
-}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params;

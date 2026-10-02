@@ -219,6 +219,7 @@ export const en: Dictionary = {
       successBody: "The e-book is on its way. If it doesn’t show up in a few minutes, check spam.",
       note: "No spam. Useful content only, and you can unsubscribe whenever you want.",
     },
+    ctaLibro: "Download the free e-book",
   },
 
   community: {
@@ -574,6 +575,82 @@ export const en: Dictionary = {
       successTitle: "You’re on the list.",
       successBody: "We’ll let you know as soon as the Kit is ready, with your founder spot reserved.",
       note: "We only write when there’s something real to say.",
+    },
+    footer: {
+      backHome: "Back to Cowth",
+    },
+  },
+
+  libroPage: {
+    meta: {
+      title: "Growing With Backup — Free E-book | Cowth Academy",
+      description:
+        "The no-fluff guide to starting your business with judgment: what to build first, what to skip, and how to keep going without giving up. Free, straight to your inbox.",
+    },
+    header: {
+      backHome: "Back to Cowth",
+    },
+    hero: {
+      eyebrow: "Free e-book · Cowth Academy",
+      title: "Building a business doesn’t have to be a solo act.",
+      subtitle:
+        "Growing With Backup is the no-fluff guide to starting your business with judgment: what to build first, what to skip, and how to keep moving without giving up. No magic shortcuts. No gurus.",
+      submitLabel: "Download free",
+      microcopy: "We’ll send it to your email. No spam. Unsubscribe anytime.",
+      coverPlaceholder: "[PENDING: cover image]",
+    },
+    problem: {
+      title: "The problem isn’t that you lack drive. It’s that you’re doing it alone.",
+      body: "Most ventures don’t die from a bad idea. They die from exhaustion: one person trying to decide everything, build everything and carry everything, with no one to tell them where to look. With AI, anyone can build fast today… almost always the wrong thing. This e-book is the first thing that doesn’t leave you alone.",
+    },
+    // [PENDING: Andrés checks these 4 bullets against the book's real
+    // chapters and adjusts the exact titles if needed.]
+    learn: {
+      label: "What you’ll learn",
+      items: [
+        "How to know which technology you need and which you don’t (before spending a dollar).",
+        "What to build first when you have a thousand ideas and little time.",
+        "Why conversations — not content — are what moves the needle early on.",
+        "How to move through 90 days with a simple plan, instead of giving up in week 3.",
+      ],
+    },
+    forWhom: {
+      label: "Who it’s for",
+      items: [
+        "For whoever has an idea and doesn’t know where to start.",
+        "For whoever is validating something without quitting their job yet.",
+        "For whoever is starting with no capital and needs focus, not another motivational course.",
+      ],
+    },
+    credibility: {
+      label: "Who writes it",
+      body: "Cowth Academy is the school of the Cowth ecosystem. It’s written by people who build real product every day (the same team behind Cowth Lab), not a coach who never shipped anything. Nobody grows alone — and that starts by not leaving you alone with the theory.",
+    },
+    finalCta: {
+      label: "Download",
+      title: "Download it free and stop doing it alone.",
+      submitLabel: "Download free",
+      microcopy: "Free. To your inbox. No spam.",
+    },
+    footer: {
+      backHome: "Back to Cowth",
+    },
+  },
+
+  libroGracias: {
+    meta: {
+      title: "Your e-book is on its way — Cowth Academy",
+      description: "Download Growing With Backup right now, or check your inbox in a few minutes.",
+    },
+    header: {
+      backHome: "Back to Cowth",
+    },
+    title: "Done. Your e-book is on its way to your inbox.",
+    downloadCta: "Download now",
+    kit: {
+      title: "Want the Grow-Alongside Kit?",
+      body: "The templates to execute the book in 90 days, as soon as it’s ready. Join the waitlist.",
+      cta: "Join the waitlist",
     },
     footer: {
       backHome: "Back to Cowth",

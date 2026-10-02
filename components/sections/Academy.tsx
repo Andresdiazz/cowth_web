@@ -1,10 +1,11 @@
 import { LeadForm } from "@/components/forms/LeadForm";
+import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import type { Dictionary } from "@/lib/i18n";
+import type { Dictionary, Locale } from "@/lib/i18n";
 
-export function Academy({ dict }: { dict: Dictionary }) {
+export function Academy({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const { academy } = dict;
 
   return (
@@ -32,6 +33,12 @@ export function Academy({ dict }: { dict: Dictionary }) {
                   </li>
                 ))}
               </ul>
+              <div className="mt-8">
+                <ButtonLink href={`/${lang}/libro`} variant="secondary">
+                  {academy.ctaLibro}
+                  <ArrowIcon />
+                </ButtonLink>
+              </div>
             </div>
           </Reveal>
 

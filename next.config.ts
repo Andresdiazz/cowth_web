@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       // Enlaces sin prefijo de idioma (anuncios, el e-book) entran en español.
       { source: "/lab", destination: "/es/lab", permanent: false },
       { source: "/kit-90-dias", destination: "/es/kit-90-dias", permanent: false },
+      { source: "/libro", destination: "/es/libro", permanent: false },
     ];
   },
 };
